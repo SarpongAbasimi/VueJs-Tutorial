@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Learn VueJs Life Cycle Hooks</title>
+    <script type="text/javascript"src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+      <div id='app'>
+        <h1>Learning Vue Js </h1>
+        <p>{{ counter}}</p>
+        <button @click='increase'>+</button>
+      </div>
+
+    <!-- development version, includes helpful console warnings -->
+  <script>
+    let vm =new Vue({
+      el:'#app',
+      data:{
+        counter:0,
+      },
+      methods:{
+        increase: function myIncrese(counter) {
+           return this.counter++
+        }
+      },
+      beforeCreate(){
+        alert('Before I create');
+      },
+      created(){
+        alert('The view has been created');
+      },
+      beforeMount(){
+        alert('I come before Mount');
+      },
+      mounted(){
+        alert('The Page will be mounted after me');
+      },
+      beforUpdate(){
+        alert('I can tell You want to update');
+      },
+      updated(){
+        alert('Well lets update then')
+      }
+
+    })
+  </script>
+  </body>
+</html>
