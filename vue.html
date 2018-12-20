@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Learning Vue js</title>
+  </head>
+  <body>
+      <div id='app'>
+          <ul>
+              <li v-for='ele in findPositives(myarray)'>
+                  I am from findPositives {{ ele }}
+                </li>
+          </ul>
+          <ul>
+              <li v-for=' ele in addElements(secondArray)'>{{ ele }}</li>
+          </ul>
+      </div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js">
+  let vm = new Vue({
+	   el:'#app',
+  data:{
+    myArray:[2,1,4,5,6,7,8,9,0,8,7,6,5,4,3],
+    secondArray:[3,4,5,6,7,8,9,4,5,6,7,8,3,1]
+  },
+    methods:{
+  	findPositives:function(myarray){
+    	return this.myArray.filter((x)=>x>5);
+    },
+    addElements:function(secondArray){
+     return this.secondArray.reduce((acc,cur)=>acc+cur);
+    }
+  }
+})
+</script>
+
+</body>
+</html>
