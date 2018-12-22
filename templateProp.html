@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Learn VueJs Transition </title>
+    <link rel="stylesheet" href="main.css">
+    <script type="text/javascript"src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <template id="message">
+       <div class="">
+        <p> {{ name }}</p>
+       </div>
+    </template>
+
+      <div id='app'>
+        <myapp name='This is just a message from a prop'> </myapp>
+      </div>
+
+    <!-- development version, includes helpful console warnings -->
+  <script>
+    Vue.component('myapp',{
+      props:{
+        name:{
+          type:String,
+          required:true,
+          default:'Hello World'
+        }
+      },
+      template: '#message'
+    });
+
+
+    let vm =new Vue({
+      el:'#app'
+    })
+  </script>
+  </body>
+</html>
