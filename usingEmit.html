@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Learn VueJs Transition </title>
+    <link rel="stylesheet" href="main.css">
+    <script type="text/javascript"src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <!--  Child Template-->
+    <template id="my-componentTemplate">
+      <div>
+      <h3> Lets see if it works </h3>
+      <button @click='update'>click to increase count from child component </button>
+      </div>
+    </template>
+
+     <!--Div element for parent -->
+      <div id='app'>
+        <div>
+         <h1> I increase </h1>
+         <span>{{ count }}</span>
+        <button @click='increase'> Click on me</button>
+        </div>
+
+        <!--
+        The method emited is received by the component which then triggers the
+        increase method in the parent component and causes count to increase
+         -->
+        <div>
+          <my-component @call-child='increase'> </my-component>
+        </div>
+      </div>
+
+    <!-- development version, includes helpful console warnings -->
+  <script>
+    // child component
+    Vue.component('my-component',{
+      data(){
+        return{
+          title:'I am a Vue component'
+        }
+      },
+      template:'#my-componentTemplate',
+      methods: {
+        update: function(){
+          return this.$emit('call-child');
+        }
+      }
+    })
+
+
+    //Parent component
+    let vm =new Vue({
+      el:'#app',
+      data:{
+        count:0
+      },
+      methods:{
+        increase: function(count){
+          this.count++;
+        }
+      }
+    })
+  </script>
+  </body>
+</html>
