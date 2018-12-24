@@ -14,11 +14,11 @@
           <h1>Type Two Numbers And Choose Operation</h1>
            <form class="form-inline" >
               <div class="firstDiv m-1">
-                <input type="text" name="inputOne" placeholder="Enter any number" id='input' class="form form-control" >
+                <input v-model='inputOne' type="text" name="inputOne" placeholder="Enter any number" id='input' class="form form-control" >
              </div>
 
               <div class="secondDiv">
-                <select class="form-control">
+                <select v-model='operator' class="form-control">
                   <option disabled >Select</option>
                   <option>+</option>
                   <option>-</option>
@@ -28,9 +28,13 @@
               </div>
 
               <div class="thirdDiv m-1">
-                      <input type="text" name="inputTwo" placeholder="Enter any number" id='inputTwo' class="form form-control" >
+                  <input v-model='inputTwo' type="text" name="inputTwo" placeholder="Enter any number" id='inputTwo' class="form form-control" >
+              </div>
+              <div>
+                <button type="button" name="button" class="btn btn-primary">calculate</button>
               </div>
            </form>
+           <span>{{ operator }}</span>
         </div>
       </template>
 
@@ -41,7 +45,9 @@
     let vm = new Vue({
       el:'#app',
       data: {
-
+        inputOne:'',
+        inputTwo:'',
+        operator:''
       },
       template:'#my-greet'
     })
