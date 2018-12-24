@@ -14,7 +14,7 @@
           <h1>Type Two Numbers And Choose Operation</h1>
            <form class="form-inline" >
               <div class="firstDiv m-1">
-                <input v-model='inputOne' type="text" name="inputOne" placeholder="Enter any number" id='input' class="form form-control" >
+                <input required v-model.number='inputOne' type="text" name="inputOne" placeholder="Enter any number" id='input' class="form form-control" >
              </div>
 
               <div class="secondDiv">
@@ -28,13 +28,16 @@
               </div>
 
               <div class="thirdDiv m-1">
-                  <input v-model='inputTwo' type="text" name="inputTwo" placeholder="Enter any number" id='inputTwo' class="form form-control" >
+                  <input  required v-model.number='inputTwo' type="text" name="inputTwo" placeholder="Enter any number" id='inputTwo' class="form form-control" >
               </div>
               <div>
-                <button type="button" name="button" class="btn btn-primary">calculate</button>
+                <button  @click='calculate' type="submit" name="button" class="btn btn-primary">calculate</button>
               </div>
            </form>
-           <span>{{ operator }}</span>
+
+           <div class="jumbotron">
+             <h3> The results of {{ inputOne }} {{ operator }} {{ inputTwo }} is {{ results }}</h3>
+            </div>
         </div>
       </template>
 
@@ -47,9 +50,31 @@
       data: {
         inputOne:'',
         inputTwo:'',
-        operator:''
+        operator:'',
+        results:null
       },
-      template:'#my-greet'
+      template:'#my-greet',
+      methods: {
+        calculate: function(){
+          event.preventDefault();
+          switch (this.operator) {
+            case '+':
+              this.results = this.inputOne + this.inputTwo
+            break
+            case '-':
+              this.results = this.inputOne - this.inputTwo
+              break
+            case '*':
+              this.results = this.inputOne * this.inputTwo
+              break
+            case '/':
+              this.results = this.inputOne / this.inputTwo
+              break;
+            default:
+
+          }
+        }
+      }
     })
   </script>
   </body>
