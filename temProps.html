@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Learn VueJs Transition </title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="main.css">
+    <script type="text/javascript"src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+
+      <!-- component template -->
+      <template id="story-template">
+        <div>
+          <h1> {{ plot }} </h1>
+        </div>
+      </template>
+
+     <!-- App container -->
+      <div id='app'>
+      </div>
+
+     <!-- App Template -->
+      <template id="my-greet">
+          <div class="container">
+                <story plot='We love a good Pizza !'></story>
+                <story plot='What can i do to help you ?'></story>
+                <story plot='This is how we do it'></story>
+                <story plot='I am inide the story component and I was pssed as a prop'></story>
+          </div>
+      </template>
+
+    <!-- development version, includes helpful console warnings -->
+  <script>
+  Vue.component('story',{
+    props:{
+      plot:{
+        type:String,
+        default:'This is the default string'
+      }
+    },
+    template:'#story-template'
+  });
+
+
+    let vm = new Vue({
+      el:'#app',
+      data: {
+      },
+      template:'#my-greet',
+      computed:{
+      }
+    });
+
+  </script>
+  </body>
+</html>
