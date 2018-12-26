@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Learn VueJs Transition </title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+    <script type="text/javascript"src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+
+      <!-- component template -->
+      <template id="story-template">
+        <div class="container">
+          <p> my name is {{ name }} and my number is {{ note }}</p>
+          <hr>
+          <div class="badge badge-dark">
+            <button @click='myAdd' class="btn btn-info"> click on me </button>
+          </div>
+        </div>
+      </template>
+
+     <!-- App container -->
+      <div id='app'>
+        <div class="container">
+           <div class="jumbotron">
+              <span> {{ counter}} </span>
+           </div>
+          <hr>
+            <story  @tick-counter='update' v-for='data in myData' :name='data.name' :note='data.number' :key='data.id'> </story>
+        </div>
+      </div>
+
+    <!-- development version, includes helpful console warnings -->
+  <script>
+  Vue.component('story',{
+    props:['name','note'],
+    template:'#story-template',
+    methods:{
+      myAdd:function(){
+        this.$emit('tick-counter');
+      }
+    }
+  });
+
+//Main App component
+ new Vue({
+      el:'#app',
+      data:{
+        myData:[
+          {name:'chris',number:'079',id:0},
+          {name:'fred',number:'089',id:1},
+          {name:'kofi',number:'1290',id:2}
+        ],
+        counter:0
+      },
+      methods:{
+        update: function(){
+          this.counter++;
+        }
+      }
+    });
+  </script>
+  </body>
+</html>
