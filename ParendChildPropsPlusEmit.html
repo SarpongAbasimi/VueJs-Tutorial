@@ -25,7 +25,7 @@
       <div id='app'>
         <div class="container">
            <div class="jumbotron">
-              <span> {{ counter}} </span>
+              <span class="badge badge-dark"> {{ counter}} </span>
            </div>
           <hr>
             <story  @tick-counter='update' v-for='data in myData' :name='data.name' :note='data.number' :key='data.id'> </story>
